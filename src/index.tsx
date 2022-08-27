@@ -32,13 +32,13 @@ createServer({
   },
 
   routes() {
-    this.namespace = 'api';
+    this.urlPrefix = 'https://dapper-bublanina-217977.netlify.app';
 
-    this.get('https://dapper-bublanina-217977.netlify.app/api/transactions', () => {
+    this.get('/transactions', () => {
       return this.schema.all('transaction')
     })
 
-    this.post('https://dapper-bublanina-217977.netlify.app/api/transactions', (schema, request) => {
+    this.post('/transactions', (schema, request) => {
       const data = JSON.parse(request.requestBody);
 
       return schema.create('transaction', data);
